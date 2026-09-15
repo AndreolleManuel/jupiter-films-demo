@@ -1,0 +1,60 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="description" content="Maquette de démonstration Jupiter Films. Design non définitif, sans paiement ni lecteur vidéo intégré."><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jupiter Films — démo découverte</title><link rel="stylesheet" href="style.css"><style id="demo-polish">
+/* Affinements de la démo — direction conservée, aucun nouveau parcours. */
+.hero .metadata{font-size:13px;color:#d4d3d6}.hero .metadata .format{display:none}
+.picks{gap:10px;bottom:39px}.pick{width:152px;min-height:89px;text-align:left;opacity:.78;isolation:isolate;border-radius:7px}.pick img{height:89px}.pick:before{content:'';position:absolute;inset:20% 0 0;background:linear-gradient(transparent,#030509ed);z-index:1}.pick span{left:10px;right:7px;bottom:9px;z-index:2;font-size:11px;line-height:1.25}.pick span b{font-weight:400;font-size:9px;display:block;color:#c7c7cb;margin-bottom:3px}.pick:after{z-index:3}.pick[aria-pressed=true]{border-color:#ff966f}.hero-note{bottom:46px}
+.film small{font-size:12px;line-height:1.5;color:#b5b7c0}.film small em{font-style:normal;display:block;font-size:11px;color:#959aa7;margin-top:3px}.film .art{aspect-ratio:2/2.85}.sample{font-size:12px;color:#aaaeb8}
+.rail-controls{display:none}.rail-controls button{border:1px solid #50545f;border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font-size:19px}.rail-controls button:disabled{opacity:.32;cursor:default}.rail-controls p{margin:0;color:#a6aab5;font-size:11px}.rail-controls .rail-buttons{display:flex;gap:8px}.rail-position{font-variant-numeric:tabular-nums;margin-right:10px;color:#e4e5eb}
+.back-to-film{display:inline-flex;align-items:center;gap:10px;margin:0 0 22px;font-size:13px;color:#f3b294;border-bottom:1px solid #655048;padding:0;min-height:44px}.dialog-body h2 small{font-size:.65em;line-height:1.3;display:inline-block;margin-top:8px}.synopsis{color:#dedee5}.close:focus-visible{outline-offset:2px}
+@media(min-width:601px) and (max-width:1050px){.pick{width:112px}.hero-note{max-width:280px;line-height:1.7}}
+@media(max-width:600px){
+ header{height:77px}.account{gap:3px}.join{padding:8px 12px;font-size:11px;line-height:1.4;display:block}.join span{display:block;font-size:10px;border:0;padding:0;line-height:1.35;letter-spacing:.2px}
+ nav{display:flex;position:absolute;top:77px;left:5%;right:5%;height:40px;gap:23px;font-size:12px;border-bottom:1px solid #ffffff22}nav .active:after{bottom:-9px;width:18px}nav button{font-size:12px;min-height:40px;padding:0}nav a,nav button{color:#f0f0f2;text-shadow:0 1px 8px #000}
+ .hero{height:662px}.hero-content{top:238px}.hero .metadata{font-size:12px}.picks{left:5%;right:5%;bottom:7px;gap:8px}.pick{flex:1;min-width:0;width:auto;min-height:51px;border:1px solid #4c505e;border-radius:5px;background:#171a22e8;padding:8px;display:flex;align-items:center;opacity:1}.pick:before,.pick:after{display:none}.pick img{display:none}.pick span{position:static;font-size:10px;line-height:1.2;letter-spacing:-.1px;text-shadow:none;color:#c1c5d0}.pick span b{display:none}.pick[aria-pressed=true]{border:1px solid #ff8b66;background:#30241f}.pick[aria-pressed=true] span{color:#fff}.pick:focus-visible{outline-offset:2px}
+ .collection{padding-top:25px}.filters button{min-height:44px}.tools{margin-bottom:12px}.film{min-width:45%;max-width:45%}.film small{font-size:11px}.film small em{font-size:10px}.posters{scrollbar-width:none;padding-bottom:5px}.rail-controls{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:16px}.result-status:empty{display:none}.offer-bar{margin-top:24px}
+}
+@media(max-width:350px){.logo{font-size:27px}.logo span{font-size:6px}.join{padding:8px 9px}.hero h1{font-size:58px}.hero h1.long{font-size:39px}.actions{gap:7px}.hero .primary{padding:12px 11px}.hero .secondary{padding:11px 10px}}
+@media(prefers-reduced-motion:reduce){.scene img{animation:none!important;transition:none!important}}
+</style></head><body><a class="skip" href="#films">Aller aux films</a><header><a href="#" class="logo" aria-label="Jupiter Films, accueil">jupiter<span>FILMS</span><i></i></a><nav aria-label="Navigation principale"><a href="#" class="active">Découvrir</a><a href="#films">Les films</a><button data-info="dvd">DVD <span>↗</span></button></nav><div class="account"><button id="search-toggle" class="icon" aria-label="Rechercher un film"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="join" data-info="offer">S’abonner <span>80 €/an</span></button></div></header><main><section class="hero" aria-label="Films à découvrir"><div class="scene" id="scene"></div><div class="shade"></div><div class="hero-content" id="hero-content"></div><div class="picks" aria-label="Choisir le film à la une"></div><div class="hero-note">LE CINÉMA POUR VOIR AUTREMENT<span>Une sélection Jupiter Films</span></div></section><section class="collection" id="films" tabindex="-1"><div class="collection-top"><div><span class="eyebrow">VOTRE PROCHAIN REGARD</span><h2>Explorez d’autres possibles.</h2></div><p>Le catalogue en accès libre.<br>Le cinéma à votre rythme.</p></div><div class="tools"><div class="filters" aria-label="Catégories proposées"><button aria-pressed="true" data-cat="Tous">Tous les films</button><button aria-pressed="false" data-cat="Le vivant">Le vivant</button><button aria-pressed="false" data-cat="Habiter la Terre">Habiter la Terre</button><button aria-pressed="false" data-cat="Vie intérieure">Vie intérieure</button></div><span class="sample">Sélection de 6 films</span></div><div class="searchbox" hidden><label for="search">Rechercher dans cette sélection</label><input id="search" type="search" placeholder="Un film, un réalisateur, un sujet…"><button id="search-close" aria-label="Fermer la recherche">✕</button></div><div class="posters" id="posters"></div><p class="result-status" role="status" aria-live="polite"></p></section><div class="offer-bar"><div><span class="orb">↗</span><p><strong>Un abonnement. Tous les films.</strong><span>Découvrez les histoires avant de vous abonner.</span></p></div><button data-info="offer">80 € <span>/ an</span> <b>→</b></button></div></main><footer><span>JUPITER FILMS</span><p>Maquette de démonstration · design non définitif · contenus publics Jupiter · catégories proposées<br>Sans compte, paiement ni lecteur vidéo intégré. Disponibilités et droits à valider.</p><button data-info="about">À propos de cet essai ↗</button></footer><dialog aria-labelledby="dialog-title"><button class="close icon" aria-label="Fermer">✕</button><div id="dialog-content"></div></dialog><script src="data.js"></script><script src="app.js"></script><script id="demo-polish-interactions">
+/* Les ajustements restent ici pour que cette version s'ouvre via le même index.html. */
+(()=>{
+ const baseFeature=feature,basePopulate=populate,baseInfo=info,baseFilm=film;
+ let requestId=0;
+ document.querySelectorAll('.pick').forEach((button,i)=>{button.querySelector('span').innerHTML='<b>0'+(i+1)+'</b>'+heroFilms[i].title});
+ heroFilms.forEach(f=>{const image=new Image();image.src='assets/'+f.image});
+ feature=async function(id,animate=true){
+  const token=++requestId,f=heroFilms.find(f=>f.id===id);if(!f)return;
+  const ready=new Image();ready.src='assets/'+f.image;try{await ready.decode()}catch(e){return}
+  if(token!==requestId)return;
+  const previous=document.querySelector('#scene img:last-child')?.cloneNode(true);
+  baseFeature(id,false);
+  if(animate&&!reduced()&&previous){
+   previous.alt='';previous.setAttribute('aria-hidden','true');$('#scene').prepend(previous);
+   const incoming=document.querySelector('#scene img:last-child');
+   const fade=incoming.animate([{opacity:0},{opacity:1}],{duration:400,easing:'ease-in-out'});
+   fade.finished.then(()=>previous.remove(),()=>previous.remove());
+   $('#hero-content').getAnimations().forEach(a=>a.cancel());
+   $('#hero-content').animate([{opacity:.1,transform:'translateY(5px)'},{opacity:1,transform:'none'}],{duration:280,easing:'cubic-bezier(.2,.65,.3,1)'});
+  }
+ };
+ $('#posters').setAttribute('tabindex','0');$('#posters').setAttribute('role','group');$('#posters').setAttribute('aria-label','Sélection de films, flèches gauche et droite pour parcourir');
+ $('#posters').insertAdjacentHTML('afterend','<div class="rail-controls"><p><span class="rail-position"></span>Faites défiler les affiches</p><div class="rail-buttons"><button id="rail-prev" aria-label="Affiches précédentes">←</button><button id="rail-next" aria-label="Affiches suivantes">→</button></div></div>');
+ function railState(){
+  const rail=$('#posters'),cards=[...rail.querySelectorAll('.film')],r=rail.getBoundingClientRect();
+  const visible=cards.map((c,i)=>({i,rect:c.getBoundingClientRect()})).filter(x=>x.rect.right>r.left+12&&x.rect.left<r.right-12);
+  $('.rail-position').textContent=visible.length?(visible[0].i+1)+'–'+(visible.at(-1).i+1)+' / '+cards.length:'';
+  $('#rail-prev').disabled=rail.scrollLeft<=2;$('#rail-next').disabled=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-3;
+  $('.rail-controls').style.visibility=cards.length?'visible':'hidden';
+ }
+ populate=function(){basePopulate();document.querySelectorAll('.film').forEach(card=>{const f=FILMS.find(x=>x.id===card.dataset.film);card.querySelector('small').innerHTML=f.year+' &nbsp;·&nbsp; '+f.duration+'<em>'+f.cat+'</em>'});requestAnimationFrame(railState)};
+ function moveRail(direction){const rail=$('#posters'),card=rail.querySelector('.film');if(!card)return;rail.scrollBy({left:direction*(card.getBoundingClientRect().width+13),behavior:reduced()?'instant':'smooth'})}
+ $('#rail-prev').onclick=()=>moveRail(-1);$('#rail-next').onclick=()=>moveRail(1);
+ $('#posters').addEventListener('scroll',railState,{passive:true});window.addEventListener('resize',railState);
+ $('#posters').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();const cards=[...$('#posters').querySelectorAll('.film')],index=cards.indexOf(document.activeElement),direction=e.key==='ArrowRight'?1:-1;if(index>=0){cards[Math.min(cards.length-1,Math.max(0,index+direction))]?.focus({preventScroll:true});document.activeElement.scrollIntoView({block:'nearest',inline:'nearest',behavior:reduced()?'instant':'smooth'})}else moveRail(direction)});
+ function rememberReading(){return $('dialog').open&&$('#dialog-content .synopsis')&&$('#dialog-content [data-trailer]')?{html:$('#dialog-content').innerHTML,scroll:$('dialog').scrollTop}:null}
+ function addReadingReturn(previous){if(!previous)return;const button=document.createElement('button');button.className='back-to-film';button.textContent='← Retour au synopsis';$('#dialog-content .dialog-body').prepend(button);button.onclick=()=>{open(previous.html);$('dialog').scrollTop=previous.scroll;$('#dialog-content [data-info="offer"]')?.focus({preventScroll:true})}}
+ info=function(type){const previous=rememberReading();baseInfo(type);if(type==='offer')addReadingReturn(previous);if(type==='about')$('#dialog-content .note').innerHTML=$('#dialog-content .note').innerHTML.replace('Aucun choix esthétique validé.','Manu a reconnu cette démo comme une réussite et un niveau minimal de qualité. Les affinements présents restent à apprécier.')};
+ film=function(id,trailer=false){const previous=trailer?rememberReading():null;baseFilm(id,trailer);if(trailer)addReadingReturn(previous)};
+ $('#search').oninput=()=>populate();
+ populate();
+})();
+</script></body></html>
